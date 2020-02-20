@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>02-vue列表展示</title>
+<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="item in hobby">{{item}}</li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:'#app',
+		data: {
+			msg: 'hello',
+			hobby: ['金','木','水']
+		}
+	});
+	
+</script>	
+</html>
