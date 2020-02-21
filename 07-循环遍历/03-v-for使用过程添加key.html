@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>03-v-for使用过程添加key</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<!-- 
+				渲染完成后,需要对li进行操作,在中间添加一个新的li,diff算法默认执行会十分麻烦,后面的所有元素都会产生变动
+				使用key进行标识,在复用的时候会进行对比,key对应的则不会改变
+				使用key最后不要用index,建议使用value
+			 -->
+			<li v-for="item in letters" :key="item">{{item}}</li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			letters:['a','b','c']
+		}
+	});
+</script>
+</html>

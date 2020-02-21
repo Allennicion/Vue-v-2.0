@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>01-块级作用域</title>
+</head>
+<body>
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+	<button>按钮4</button>
+	<button>按钮5</button>
+</body>
+<script type="text/javascript">
+	//ES5中的var没有块级作用域,ES6中的let有块级作用域,比如if/for
+	//ES5之前if和for没有块级作用域的概念,所以在很多时候使用var定义的时候,都必须借助function的作用域(闭包)来解决应用外面变量的问
+	//ES6中,加入了let,let在if和for中有块级作用域的概念
+	//1.变量作用域: 即变量在什么范围内是可用的
+/* 	{
+		var name = 'why';
+		console.log(name);
+	} */
+	//因为var没有块级作用域的概念,所以在块的外面同样可以调用
+	/* console.log(name); */
+	
+	//2.没有块级作用域的概念引发的问题: if的块级
+/* 	var func;
+	if(true){
+		var name = "why";
+		func = function() {
+			console.log(name);
+		}
+		func();//why
+	}
+	//这里将if内的变量给修改了.
+	name = "what";
+	func();//what
+	console.log(name);//what */
+	
+	//2.没有块级作用域的概念引发的问题: for的块级
+/* 	var btns = document.getElementsByTagName('button');
+	for(var i = 0; i < btns.length; i++) {
+ 		//这里不管点哪个按钮都会输出第5个
+		//因为var在if中没有作用域,导致前面的i被后面的i覆盖
+		btns[i].addEventListener('click',function() {
+			console.log("第" + i + "个");
+		}); 
+		//解决方法:使用闭包,因为闭包是一个作用域
+		(function(i){
+			btns[i].addEventListener('click',function() {
+				console.log("第" + i + "个");
+			});
+		})(i)
+	} */
+	
+	//3.使用ES6
+	const btns = document.getElementsByTagName('button');
+	for(let i = 0; i < btns.length; i++) {
+		btns[i].addEventListener('click',function() {
+			console.log("第" + i + "个");
+		}); 
+	} 
+	
+</script>
+</html>

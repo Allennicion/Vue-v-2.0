@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>03-v-if和v-else和v-else-if的使用</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<!-- 这种情况一般不这样处理,较麻烦 -->
+		<h2 v-if="score>=90">优秀</h2>
+		<h2 v-else-if="score<90&&score>=60">及格</h2>
+		<h2 v-else>不及格</h2>
+		
+		<!-- 可以使用计算属性进行处理 -->
+		<h2>{{result}}</h2>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			score: 90
+		},
+		computed: {
+			result() {
+				let showMsg = "";
+				if(this.score>=90) {
+					showMsg = "优秀";
+				}
+				return showMsg;
+			}
+		}
+	});
+</script>
+</html>

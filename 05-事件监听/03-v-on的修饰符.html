@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>03-v-on的修饰符</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<div @click="divClick">
+			这是div
+			<!-- .stop修饰符,阻止事件冒泡 -->
+			<button @click.stop="buttonClick">按钮</button>
+		</div>
+		
+		<!-- .prevent修饰符,阻止默认事件 -->
+		<form action="google" method="post">
+			<!-- 要求点击提交不通过form表单自动提交,自己手动操作. -->
+			<input type="submit" value="提交" @click.prevent="submitClick" />
+		</form>
+		
+		<!-- @keyup:键盘松开;@keydown:键盘按下 -->
+		<!-- 监听键盘的键的点击 -->
+		<input type="text" @keyup="keyUp">
+		<!-- 监听键盘回车键的点击,键别名 -->
+		<input type="text" @keyup.enter="keyUp">
+		<!-- 监听键盘回车键的点击,键代码(keycode) -->
+		<input type="text" @keyup.13="keyUp">
+		
+		<!-- .once修饰符,只回调一次,只有第一次点有反应,再点则没有反应 -->
+		<button @click.once="btnClick2">按钮2</button>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+		},
+		methods: {
+			divClick() {
+				console.log('divClick');
+			},
+			buttonClick() {
+				console.log('buttonClick');
+			},
+			submitClick() {
+				console.log('submitClick');
+			},
+			keyUp() {
+				console.log('keyUp');
+			},
+			btnClick2() {
+				console.log('btnClick2');
+			}
+		}
+	});
+</script>
+</html>

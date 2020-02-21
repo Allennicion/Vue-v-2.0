@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>06-v-show的使用</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		
+		<!-- 
+			区别:
+				v-if="false"时,被包含的元素根本不会存在dom中,直接删掉,变为true时再拿回来
+				v-show="false"时,只是加入一个行内样式display:none,本身并没有删掉
+				
+				因此再需要频繁切换的时候使用v-show,否则使用v-if
+				但在开发中依然大量的使用v-if
+		 -->
+		
+		<h2 v-if="isShow">{{msg}}</h2>
+		<h2 v-show="isShow">{{msg}}</h2>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			isShow: true
+		}
+	});
+</script>
+</html>

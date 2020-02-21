@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>01-v-on的基本使用</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<h2>{{count}}</h2>
+		<button @click="increment">+</button>
+		<button @click="decrement">-</button>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			count: 0
+		},
+		methods: {
+			increment() {
+				this.count++;
+			},
+			decrement() {
+				this.count--;
+			}
+		}
+	});
+</script>
+</html>

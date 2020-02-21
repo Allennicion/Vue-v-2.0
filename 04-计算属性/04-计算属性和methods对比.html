@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>04-计算属性和methods对比</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- 1.直接拼接_语法过于繁琐不推荐.-->
+		<h2>{{firstname + " " + lastname}}</h2>
+		
+		<!-- 2.调用函数_多次使用时会重复调用-->
+		<h2>{{getFullName()}}</h2>
+		<h2>{{getFullName()}}</h2>
+		<h2>{{getFullName()}}</h2>
+		<h2>{{getFullName()}}</h2>
+		
+		<!-- 3.计算属性_多次使用也只会调用一次,性能较高-->
+		<!-- 内部做了缓存处理,如果数据没有发生变化则直接从缓存取 -->
+		<h2>{{fullName}}</h2>
+		<h2>{{fullName}}</h2>
+		<h2>{{fullName}}</h2>
+		<h2>{{fullName}}</h2>
+		
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			firstname: "Allen",
+			lastname: "cc"
+		},
+		computed: {
+			fullName: function() {
+				console.log("computed");
+				return this.firstname+" "+this.lastname;
+			}
+		},
+		methods: {
+			getFullName: function() {
+				console.log("Methods");
+				return this.firstname+" "+this.lastname;
+			}
+		}
+	});
+</script>
+</html>

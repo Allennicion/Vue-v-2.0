@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>02-v-on的参数传递</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<h2>{{count}}</h2>
+		<!-- 事件的方法调用没有参数可以省略() -->
+		<button @click="increment">+</button>
+		<button @click="decrement">-</button>
+		
+		<!-- 在事件定义时,写函数省略了小括号,但是方法本身是需要一个参数的 -->
+		<!-- 如果函数需要参数,但是没有传入,那么函数的形参为underfined -->
+		<button @click="btnClick()">按钮1</button>
+		
+		<!-- 写函数省略了小括号,但是方法本身需要参数,所以vue将浏览器自动生成的event事件对象作为参数传入到方法中 -->
+		<button @click="btnClick">按钮2</button>
+		
+		<!-- 方法定义时,我们需要event对象,同时又需要其他参数 -->
+		<button @click="btnClick3(123,$event)">按钮3</button>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			count: 0
+		},
+		methods: {
+			increment() {
+				this.count++;
+			},
+			decrement() {
+				this.count--;
+			},
+			btnClick(event) {
+				console.log('--------'+event);
+			},
+			btnClick3(rs, event) {
+				console.log(rs+"---"+event);
+			}
+		}
+	});
+</script>
+</html>

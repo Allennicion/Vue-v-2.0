@@ -11,10 +11,18 @@
 	</style>
 </head>
 <body>
+	<!-- 
+		要求第一行字体颜色为红色
+		点击哪行则为红色,其他行恢复原来
+	 -->
+	
 	<div id="app">
 		<h2>{{msg}}</h2>
 		<ul>
-			<li v-for="(h,index) in hobby" @click="change(index)" :class="{imp:isImp}">{{h}}</li>
+			<li v-for="(h,index) in hobby" @click="change(index)" 
+					:class="{imp:currentIndex == index}">
+				{{h}}
+			</li>
 		</ul>
 	</div>
 </body>
@@ -24,13 +32,14 @@
 		data: {
 			msg: "Hello",
 			hobby: ['金','木','水'],
-			imp: "imp",
-			isImp: false
+			isImp: false,
+			//记录哪个变成红色
+			currentIndex: 0
+			
 		},
 		methods: {
 			change: function(index) {
-				console.log(index);
-				this.isImp = !this.isImp;
+				this.currentIndex = index;
 			}
 		}
 	});

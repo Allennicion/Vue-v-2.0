@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>03-对象字面量的增强写法</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	//1.属性的增强写法
+	const name = 'juli';
+	const age = '13';
+	const height = '1.54';
+	
+	//将属性放入对象中
+	//ES5写法
+/* 	const obj = {
+		name : name,
+		age : age,
+		height : height
+	}
+	console.log(obj); */
+	
+	//ES6属性增强写法
+	const obj = {
+		name,
+		age,
+		height
+	}
+	console.log(obj);
+	
+	//2.函数的增强写法
+	const fun = {
+		//ES5写法
+		run: function() {
+			//具体内容
+		},
+		//ES6写法
+		eat() {
+			//具体内容
+		}
+	}
+	
+</script>
+</html>

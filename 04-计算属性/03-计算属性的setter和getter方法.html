@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>03-计算属性的setter和getter方法</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<h2>{{fullName}}</h2>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			firstname: "Allen",
+			lastname: "cc"
+		},
+		computed: {
+			//这是计算属性中的简写
+			/* fullName: function() {这里的方法其实对应的就是get方法
+				return this.firstname+" "+this.lastname;
+			} */
+			//这是完整写法
+			fullName: {
+				//一般计算属性中不需要set方法,只要get得到结果就可以了,所以为空,可以删掉set方法,则为只读属性
+				set: function(newValue) {
+					console.log(newValue);
+					const names = newValue.split(" ");
+					this.firstname = names[0];
+					this.lastname = names[1];
+				},
+				//页面展示调用这个get方法
+				get: function() {
+					return this.firstname+" "+this.lastname;
+				}
+			}
+		},
+	});
+</script>
+</html>
