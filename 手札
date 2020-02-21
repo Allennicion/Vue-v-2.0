@@ -1,0 +1,49 @@
+# Vue-v-2.0
+Learn Vue -version 2.0
+@Linke Vue官方教程网站: https://cn.vuejs.org/v2/guide/
+
+@Time 2020.2.21
+一、初识Vue
+  1.1.认识vue.js
+    1.1.1.vue的渐进式
+    1.1.2.vue的声明式渲染,所有东西都是响应式的
+    1.1.3.vue的特点
+  1.2.安装vue
+    1.2.1.CDN引入
+    1.2.2.下载vue.js
+    1.2.3.npm安装
+  1.3.vue的初体验
+    1.3.1.helloVue:Mustache语法-> 体验vue的响应式
+    1.3.2.Vue的列表展示:v-for
+    1.3.3.计数器:案件监听-> methods-> @click
+  1.4.vue中的MVVM
+    MODEL->VIEW->VIEW->MODEL
+  1.5.vue中的options对象
+    1.5.1.el:
+    1.5.2.data:
+    1.5.3.methods:
+    1.5.4.生命周期函数:
+    .................
+    
+二、插值语法
+  2.1.Mustache语法
+  2.2.v-once 表示元素和组件只渲染一次
+  2.3.v-html 渲染便签内容
+  2.4.v-text 与Mustache语法差不多,但不够灵活,一般不用
+  2.5.v-pre{{}} 显示渲染前的内容
+  2.5.v-cloak  斗篷
+  
+三、V-bind
+  3.1.v-bind绑定基本属性
+    3.1.1.v-bind:src
+    3.1.2.v-bink:href
+  3.2.v-bind动态绑定class
+    3.2.1.对象语法-> :class="{类名:boolean}"
+    3.2.2.数组语法-> :class="[类名变量1,类名变量2]"
+  3.3.v-bind动态绑定style
+    3.3.1.对象语法-> :style="{css属性名:css属性值}"
+    3.3.2.数组语法-> :style="[css对象1,css对象2]"
+
+四、计算属性(很重要)
+  4.1.简单属性拼接
+  4.2.books->price汇总
