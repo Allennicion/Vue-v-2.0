@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>04-v-bind和v-for的结合</title>
+	<script src="../js/vue.js"></script>
+	<style type="text/css">
+		.imp{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<ul>
+			<li v-for="(h,index) in hobby" @click="change(index)" :class="{imp:isImp}">{{h}}</li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			hobby: ['金','木','水'],
+			imp: "imp",
+			isImp: false
+		},
+		methods: {
+			change: function(index) {
+				console.log(index);
+				this.isImp = !this.isImp;
+			}
+		}
+	});
+</script>
+</html>

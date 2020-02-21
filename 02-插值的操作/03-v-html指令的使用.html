@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>03-v-html指令的使用</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>{{url}}</h2>
+		<h2 v-html="url"></h2>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			url: '<a href="http://www.google.com">谷歌一下</a>'
+		}
+	});
+</script>
+</html>

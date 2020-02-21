@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>01-计算属性的基本使用</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- 将变量展示 -->
+		<h2>{{firstname + " " + lastname}}</h2>
+		<h2>{{firstname}} {{lastname}}</h2>
+		
+		<!-- 数据准备展示到页面,但是展示之前需要进行一些结合或变化. -->
+		<!-- 方法1:使用methods -->
+		<h2>{{getFullName()}}</h2>
+		
+		<!-- 方法2:使用计算属性 -->
+		<h2>{{fullName}}</h2>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			firstname: "Allen",
+			lastname: "cc"
+		},
+		//计算属性,一般用于数据展示前的计算再返回一个最终数据,命名最好区分与方法
+		//本质是个属性,使用的时候直接像data那样写就可以了
+		//计算属性只计算一次,比methods性能更高
+		computed: {
+			fullName: function() {
+				return this.firstname+" "+this.lastname;
+			}
+		},
+		methods: {
+			getFullName: function() {
+				return this.firstname+" "+this.lastname;
+			}
+		}
+	});
+</script>
+</html>

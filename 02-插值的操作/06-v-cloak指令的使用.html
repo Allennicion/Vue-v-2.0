@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>06-v-cloak指令的使用</title>
+	<script src="../js/vue.js"></script>
+	<style type="text/css">
+		[v-cloak]{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<!-- v-cloak防止js代码未加载或卡顿导致的慢加载使用户看到{{msg}} -->
+		<h2 v-cloak>{{msg}}</h2>
+	</div>
+</body>
+<script type="text/javascript">
+	//vue解析之前,h2标签中有v-cloak这个属性
+	//vue解析之后,h2标签中v-cloak属性消失
+	//这里加上延迟加载可以明显的看到
+	setTimeout(function() {
+		const app = new Vue({
+			el: '#app',
+			data: {
+				msg: "Hello",
+			}
+		});
+	},1000
+	);
+</script>
+</html>

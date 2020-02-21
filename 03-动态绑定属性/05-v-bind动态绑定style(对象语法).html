@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>05-v-bind动态绑定style(对象语法)</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- <h2 :style="{key(css属性名):value(属性值)}">{{msg}}</h2> -->
+		<!-- 这里支持驼峰表示例如font-size -->
+		<!-- 50px必须加上引号,否则会当成变量解析 -->
+		<h2 :style="{fontSize: '50px'}">{{msg}}</h2>
+		
+		<h2 :style="{fontSize: size + 'px', color: col}">{{msg}}</h2>
+		
+		<h2 :style="getStyles()">{{msg}}</h2>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			size: 70,
+			col: 'red'
+		},
+		methods: {
+			getStyles: function() {
+				return {fontSize: this.size + 'px', color: this.col};
+			}
+		}
+	});
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>03-v-bind动态绑定class属性(数组语法)</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- 数组语法,一般用的不多,数组中区分变量 -->
+		<h2 class="title" :class="[act, bac]">{{msg}}</h2> 
+		<!-- 也可以写在methods中 -->
+		<h2 class="title" :class="getClass()">{{msg}}</h2> 
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			act: "aaa",
+			bac: "bbb"
+		},
+		methods: {
+			getClass: function() {
+				return [this.act, this.bac];
+			}
+		}
+	});
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>04-v-text指令的使用</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- 一般开发中用Mustache语法较多 -->
+		<h2>{{msg}}</h2>
+		<!-- v-text不够灵活所以一般不用 -->
+		<h2 v-text="msg"></h2>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+		}
+	});
+</script>
+</html>

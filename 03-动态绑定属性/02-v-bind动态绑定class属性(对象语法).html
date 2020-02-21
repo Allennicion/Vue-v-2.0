@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>02-v-bind动态绑定class属性(对象语法)</title>
+	<script src="../js/vue.js"></script>
+	<style type="text/css">
+		.act{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<h2 class="act">{{msg}}</h2>
+		
+		<!-- 动态绑定 -->
+		<!-- {}是对象,里面可以放入多个键值对 -->
+		<!-- <h2 :class="{k1:v1, k2,v2}">{{msg}}</h2> -->
+		<!-- <h2 :class="{类名1:boolean, 类名2,boolean}">{{msg}}</h2> -->
+		<h2 :class="{act:isAct, line:isLine}">{{msg}}</h2>
+		<!-- 对象过于复杂的时候可以在methods或computed计算属性中定义,下面演示方法methods中 -->
+		<h2 :class="getClass()">{{msg}}</h2>
+		<button type="button" @click="change">Change</button>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			isAct: true,
+			isLine: true
+		},
+		methods: {
+			change: function() {
+				this.isAct = !this.isAct;
+			},
+			getClass: function() {
+				return {act:this.isAct, line:this.isLine};
+			}
+		}
+	});
+</script>
+</html>
