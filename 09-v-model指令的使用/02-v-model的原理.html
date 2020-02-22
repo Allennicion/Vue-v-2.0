@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>02-v-model的原理</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- <input type="text" v-model="msg"> -->
+		<!-- 原理解剖 -->
+		<!-- 1.通过v-bind绑定value使input取到msg的值 -->
+		<!-- 2.通过methods方法监控input输入,再通过获取浏览器自动生成的event,获取输入的值,替换msg -->
+		<input type="text" :value="msg" @input="valueChange">
+		<!-- 可以直接用表达式解决 -->
+		<input type="text" :value="msg" @input="msg = $event.target.value">
+		
+		<!-- 
+		 因此v-model其实是一个语法糖,背后本质是包含两个操作
+		 1.v-bind绑定一个value值
+		 2.v-on指令给当前元素绑定一个事件
+		 -->
+		 <div class="mui-input-row mui-radio ">
+		 	<label>Radio</label>
+		 	<input name="radio" type="radio" checked>
+		 </div>
+		<h2>{{msg}}</h2>
+	</div>
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+		},
+		methods: {
+			valueChange(event) {
+				//获取input里输入的值赋给msg
+				this.msg = event.target.value;
+			}
+		}
+	});
+</script>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>07-组件内的data为什么是个函数</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<!-- 
+		每一个都是组件实例对象 
+		并不共用同一个data属性,因为data是一个函数,函数内部是封闭的,返回的是obj,每次调用都是一个新的对象,
+		指向新的内存地址
+		但是如果有一个const obj = {}对象在外面声明, 并通过data函数返回,这里每次调用,返回的都是同一个对象,
+		指向的是同一个内存地址.
+		-->
+		<cpn></cpn>
+		<cpn></cpn>
+		<cpn></cpn>
+		
+		<!-- Q:上面用的是同一个组件,同一个data数据,其中一个组件对data数据操作的时候,不会影响到其他组件吗? -->
+	</div>
+	
+	<template id='cpn'>
+		<div>
+			<h2>当前计数:{{count}}</h2>
+			<!-- 		
+			<button @click="count++">+</button>
+			<button @click="count--">-</button> 
+			-->
+			<button @click="increase">+</button>
+			<button @click="decrease">-</button>
+		</div>
+	</template>
+</body>
+<script type="text/javascript">
+	
+	const obj = {};
+	
+	//1.注册组件
+	Vue.component('cpn',{
+		template:'#cpn',
+		data() {
+			//组件中data作为函数的最大好处,使组件复用且data内的数据互不影响,独立性
+			//这里每次调用返回的都是一个新的对象(内存地址)
+			return {
+				count: 0
+			}
+			
+			//return obj;这样会返回同一个对象,因为这个对象用于指向同一个地址
+		},
+		methods:{
+			increase: function() {
+				this.count++;
+				console.log("加");
+			},
+			decrease: function() {
+				this.count--;
+				console.log("减");
+			}
+		}
+	})
+	
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+		}
+	});
+</script>
+</html>

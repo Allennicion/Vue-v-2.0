@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>08-组件通讯-父组件向子组件传递数据</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<!-- 必须用v-bind绑定,Vue才会将其看作变量去寻找 -->
+		<cpn :cmovies="movies" :cmsg="msg"></cpn>
+	</div>
+	
+	<template id="cpn">
+		<div>
+			<ul>
+				<li v-for="item in cmovies">{{item}}</li>
+			</ul>
+			<h2>{{cmsg}}</h2>
+		</div>
+	</template>
+</body>
+<script type="text/javascript">
+	//这里Vue实例看作父组件,cpn作为子组件
+	
+	//父传子:props
+	const cpn = {
+		template: '#cpn',
+		//这里可以看成自己的变量,必须用v-bind绑定
+		//props可以作为数组,也可以作为对象,对象的好处是可以进行类型验证等
+		//props: ['cmovies','cmsg'],
+		props: {
+			/*1.类型验证
+			cmovies: Array,
+			cmsg: String */
+			//2.提供一些默认值以及必传值
+			cmsg:{
+				type: String,
+				//没有给这个变量赋值则使用默认值
+				default: 'cc',
+				//必须给这个变量传值
+				required: true,
+				//自定义验证函数
+				validator: function(value){
+					//这个值必须匹配下列字符串中的一个
+					return ['a','b','c'].indexOf(value) != -1;
+				}
+			},
+			cmovies:{
+				//这里的类型使对象或者数值时,默认值必须是一个函数
+				type: Array,
+				default() {
+					return [];
+				}
+			}
+		},
+		data(){
+			return {
+				
+			}
+		},
+		methods: {
+			
+		}
+	}
+	
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			movies:['红楼梦','西游记','水浒传','三国演义']
+		},
+		components: {
+			//对象字面量的增强写法->'cpn':cpn
+			cpn
+		}
+	});
+</script>
+</html>

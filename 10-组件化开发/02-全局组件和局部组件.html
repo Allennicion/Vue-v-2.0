@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>02-全局组件和局部组件</title>
+	<script src="../js/vue.js"></script>
+	<style type="text/css">
+		[v-cloak]{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<h2 v-cloak>{{msg}}</h2>
+		<cpn></cpn>
+		<cpn></cpn>
+	</div>
+	
+	<div id="app2">
+		<cpn></cpn>
+	</div>
+</body>
+<script type="text/javascript">
+	
+	//1.创建组件构造器对象
+	const cpnC = Vue.extend({
+		template: `
+			<div>
+				<h2>标题</h2>
+				<p>这是内容</p>
+				<p>这是内容</p>
+			</div>
+		`
+	});
+	//2.注册组件(全局组件,意味着可以在多个Vue实例下使用)
+	//Vue.component('cpn',cpnC);
+	
+	//Q:如何注册局部组件呢?
+	//A:直接在Vue实例下注册
+	
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+		},
+		//局部组件
+		components: {
+			//cpn 使用组件是的标签名
+			cpn: cpnC
+		}
+	});
+	
+	
+	const app2 = new Vue({
+		el: '#app2',
+	});</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>09-组件通讯-父传子(props驼峰标识)</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<!-- 目前vue版本不支持驼峰:cInfo,但是可以通过-分开:c-info达到同一个效果 -->
+		<cpn :cinfo="info" :c-aa-bb-cc="AaBbCc"></cpn>
+	</div>
+	
+	<template id="cpn">
+		<div>
+			<h2>{{cinfo}}</h2>
+			<p>{{cAaBbCc}}</p>
+		</div>
+	</template>
+</body>
+<script type="text/javascript">
+	
+	const cpn = {
+		template: '#cpn',
+		props: {
+			//v-bind绑定的属性不支持驼峰规则
+			cinfo: {
+				type: Object,
+				default() {
+					return {};
+				}
+			},
+			cAaBbCc: {
+				type: String,
+				default: 'default'
+			}
+		}
+	}
+
+
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+			info: {
+				name: '张三',
+				age: '13',
+				weight: '1.42'
+			},
+			AaBbCc:'这就是驼峰'
+		},
+		components: {
+			cpn
+		}
+	});
+</script>
+</html>

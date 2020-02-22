@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>06-组件数据中的存放问题</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<cpn></cpn>
+		<cpn></cpn>
+	</div>
+	
+<!-- template标签,通过id绑定 -->
+<template id="cpn">
+	<div>
+		<h2>{{title}}</h2>
+		<p>内容</p>
+	</div>
+</template>
+	
+</body>
+<script type="text/javascript">
+	
+	//注册一个全局组件
+	Vue.component('cpn',{
+		//使用template标签分离写法
+		template: '#cpn',
+		//组件无法直接使用Vue实例里面的data数据等其他属性
+		//但他是一个完整的模板,应该有属于自己的数据存放包括methods等属性
+		//只不过组件的data是一个函数,返回的是一个对象
+		data(){
+			return {
+				title: 'avc'
+			}
+	 }
+	});
+	
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+		}
+	});
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>01-组件化的基本使用</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<!-- 3.直接使用 -->
+		<my-cpn></my-cpn>
+		<my-cpn></my-cpn>
+		<my-cpn></my-cpn>
+	</div>
+</body>
+<script type="text/javascript">
+	//ES6语法
+	// ``也可以定义为字符串,但是比''/"" 多了支持换行的功能
+	
+	//1.创建组件构造器对象
+	//Vue.extend创建的就是一个组件构造器,传入template代表我们要自定义的模板
+	//该模板就是在使用组件的地方要显示的html代码
+	//这种写法在v2.x基本看不到了,有更加方便的语法糖
+	const cpnC = Vue.extend({
+		template: `
+			<div>
+				<h2>标题</h2>
+				<p>这是内容</p>
+				<p>这是内容</p>
+			</div>
+		`
+	});
+	
+	//2.注册组件,并且起一个组件的标签名(全局组件)
+	//组件无法在不被Vue挂载的实例下使用
+	//Vue.component(组件的标签名,组件构造器对象)
+	Vue.component('my-cpn',cpnC);
+	
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+		}
+	});
+</script>
+</html>
