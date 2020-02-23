@@ -50,6 +50,8 @@ Learn Vue -version 2.0
     3.3.1.对象语法-> :style="{css属性名:css属性值}"
     3.3.2.数组语法-> :style="[css对象1,css对象2]"
 
+
+@Time 2020.02.22
 四、计算属性(很重要)
   4.1.计算属性本质
 		fullname:{set(),get()};

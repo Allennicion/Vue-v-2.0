@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>02-slot-具名插槽的使用</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	
+	<!-- 
+		有的时候一个插槽无法满足业务需求,因此有了多个插槽进行具名的使用
+	 -->
+	
+	<div id="app">
+		<!-- 如果不进行具名的话会替换没有名字的slot -->
+		<cpn><span>标题</span></cpn>
+		<cpn><span slot="left">左边标题</span></cpn>
+		
+		<cpn>
+			<span slot="left">左边标题</span>
+			<button slot="right">右边标题</button>
+		</cpn>
+	</div>
+	
+	<template id="cpn">
+		<div>
+			<!-- 这里如果不取名字,在进行替换的时候会无法分清 -->
+			<slot name="left"><span>左边</span></slot>
+			<slot name="center"><span>中间</span></slot>
+			<slot name="right"><span>右边</span></slot>
+		</div>
+	</template>
+	
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+		},
+		components: {
+			cpn: {
+				template: '#cpn',
+			}
+		}
+	});
+</script>
+</html>

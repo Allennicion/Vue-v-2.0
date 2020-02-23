@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>01-slot-插槽的基本使用</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	
+	<!-- 
+		1.插槽的基本使用,在组件中定义<solt></slot>标签
+			cpn标签使用时,可以在中间内容填写,这是会将solt标签替换掉,达到同样的标签有不同的效果
+		2.插槽的默认值,
+			有些内容重复程度很高,可以在定义solt标签时,定义如:<solt><p>重复的</p></slot>,
+			这时如果用cpn的时候不替换则会默认使用定义的,
+			如果cpn标签内写了则会替换掉
+		3.如果有多个值同时放入组件中替换时,会一起作为替换元素替换掉
+		
+		一句话总结:
+			父组件替换插槽的标签,但是内容由子组件来提供
+	 -->
+	
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<cpn></cpn>
+		<cpn><button>按钮</button></cpn>
+		<cpn><p>第三个</p></cpn>
+		<cpn><a href="">第四个</a></cpn>
+		<cpn>
+			<div>第五个</div>
+			<div>
+				<p>123</p>
+				<span>456</span>
+			</div>
+		</cpn>
+	</div>
+	
+	<template id="cpn">
+		<div>
+			<h2>组件</h2>
+			<p>哈哈哈哈</p>
+			<slot><p>重复的</p></slot>
+		</div>
+	</template>
+	
+</body>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+		},
+		components: {
+			cpn: {
+				template: '#cpn',
+			}
+		}
+	});
+</script>
+</html>

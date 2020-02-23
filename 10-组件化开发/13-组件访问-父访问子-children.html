@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>13-组件访问-父访问子-children</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>{{msg}}</h2>
+		<cpn></cpn>
+		<cpn></cpn>
+		<cpn ref='a'></cpn>
+		<button @click="btnclick">按钮</button>
+	</div>
+	
+	<template id="cpn">
+		<div>子组件</div>
+	</template>
+	
+</body>
+<script type="text/javascript">
+
+	const app = new Vue({
+		el: '#app',
+		data: {
+			msg: "Hello",
+		},
+		methods: {
+			btnclick() {
+				//1.$children,获取子组件数组,一般用的比较少
+				/* for(let c of this.$children) {
+					console.log(c.name);
+					c.showMsg();
+				} */
+				
+				//2.$refs=>对象类型,默认是一个空对象,父组件中子组件标签必须使用ref=''进行声明
+				console.log(this.$refs.a.name);
+			}
+		},
+		components:{
+			cpn:{
+				template: '#cpn',
+				data() {
+					return {
+						name: 'name'
+					}
+				},
+				methods: {
+					showMsg() {
+						console.log('showMsg');
+					}
+				}
+			}
+		}
+	});
+</script>
+</html>
