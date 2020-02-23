@@ -169,6 +169,90 @@ Learn Vue -version 2.0
 				cpnClick(item) {
 						console.log(item);
 				}
+				
+	10.9.父子组件的访问
+		10.9.1.父访问子
+			1.$children,获取子组件数组,一般用的比较少
+			2.$refs=>对象类型,默认是一个空对象,父组件中子组件标签必须使用ref=''进行声明
+			
+		10.9.2.子访问父
+			1.访问父组件$parent
+			2.访问根组件$root
+			
+十一、组件化高级
+	11.1.slot插槽的基本使用
+		1.在组件中定义<solt></slot>标签
+		2.插槽的默认值
+		3.如果有多个值同时放入组件中替换时,会一起作为替换元素替换掉
+		一句话总结:
+			父组件替换插槽的标签,但是内容由子组件来提供
+			
+	11.2.slot具名插槽的使用
+		一个插槽无法满足业务需求,因此有了多个插槽进行具名的使用
+		
+	11.3.编译的作用域
+		父组件模板的所有东西都会在父级作用域里编译
+		子组件模板的所有东西都会在子级作用域里编译
+		
+	11.4.作用于插槽的案例
+	
+十二、前端模块化
+	12.1.为什么要使用模块化
+		1.简单写js带来的问题
+		2.闭包引起代码不可复用
+		3.自己实现了简单的模块化
+		4.AMD/CMD/CommonJS/ES6
+		
+	12.2.ES6中模块化的使用
+		export
+		import
+		
+十三、webpack
+	13.1.什么是webpack
+		1.webpack和gulp对比
+		2.webpack依赖环境(node)
+		3.webpack的安装
+		
+	13.2.webpack的起步
+		13.2.1.webpack的命令
+			webpack ./src/main.js ./dist/bundle.js 
+			将前面的js文件打包到后面的文件中
+				
+		13.2.2.webpack的配置
+			webpack.config.js/package.json(scripts)
+			
+	13.3.webpackdeloader
+		1.css-loader/style-loader
+			负责加载css文件/负责将样式添加到DOM中
+		2.less-loader/less
+			less文件的处理
+		3.url-loader/file-loader
+			对图片的处理/处理大于limit限制的
+		4.babel-loader
+			ES6->ES5
+			
+	13.4.webpack配置vue
+		1.vue代码/文件的抽离
+		2.vue-loader加载vue
+		
+	13.5.webpack的插件
+	
+	13.6.搭建本地服务器
+		webpack-dev-server
+		
+	13.7.配置文件分离
+	
+十四、Vue VLI
+	14.1.什么是CLI
+		脚手架是什么东西
+		CLI依赖webpack,node,npm
+		安装CLI ->npm install -g @vue/cli
+		拉取2.x版本->npm install -g @vue/cli-init
+		
+	14.2.Vue初始化项目的过程
+		vue create
+		
+	14.3.Vue目录结构
 
 	
 
