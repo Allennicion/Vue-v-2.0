@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>05-箭头函数参数和返回值问题</title>
+</head>
+<body>
+</body>
+
+<script type="text/javascript">
+	
+	//1.参数问题
+	//1.1.放入两个参数
+	const sum = (n1, n2) => {
+		return n1+n2;
+	}
+	console.log(sum(1,2));
+	//1.2.放入一个参数,一个参数小括号可以省略
+	const power = num => {
+		return num*num;
+	}
+	
+	//2.业务处理问题
+	//2.1.大括号代码块中有多行代码
+	const test = () => { 
+		//1.打印hello
+		console.log('hello');
+		//2.打印hi
+		console.log('hi');
+	}
+	
+	//2.2.代码块中只有一行代码(可以省略大括号,会自动将返回值返回,如果没有返回值则返回undefined)
+	const mull = (n1, n2) => n1*n2;
+		
+	const D = d => d*0;
+	console.log(D(1));
+	
+</script>
+</html>
