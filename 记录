@@ -249,11 +249,64 @@ Learn Vue -version 2.0
 		安装CLI ->npm install -g @vue/cli
 		拉取2.x版本->npm install -g @vue/cli-init
 		
-	14.2.Vue初始化项目的过程
-		vue create
+	14.2.runtime-compiler和runtime-only区别
+		1.runtime-compiler:
+			template->ast->render->vdom->UI
 		
-	14.3.Vue目录结构
-
+		2.runtime-only(性能更高,代码量更少):
+			render->vdom->UI
+			
+			render:(h) => h(App); h -> createElement
+			
+十五、Vue-Router
+	15.1.什么是前端路由(前端进行管理的一套映射关系)
+		1.后端渲染/前端渲染
+		2.前后端分离
+		3.SPA/前端路由
+		
+	15.2.路由的基本配置
+		1.安装vue-router
+		2.Vue.user -> 创建VueRouter对象 -> 挂载到Vue实例上
+		3.配置映射关系	
+			3.1.创建组件
+			3.2.配置映射关系
+			3.3.使用router-link和router-view
+			
+	15.3.路由的细节处理
+		1.默认路由: rediect
+		2.mode: history模式
+		3.router-link标签属性 -> tag/replace/active-class
+		
+	15.4.动态路由
+		1.http://localhost:8080/user/zhangsan
+			/user/:id
+			this.$route.params.id;
+			
+		2.<!-- http://localhost:8080/profile?name=zhangsan&age=13&weight=1.56 -->
+			query
+			$route.query
+			
+	15.5.参数的传递
+		1.params
+		2.query -> URL
+		3.URL:
+			协议://主机:端口/路径?查询
+			scheme://host:port/query#fragment
+			
+	15.6.路由嵌套
+		index.js文件中创建VueRouter实例中配置路由和组件之间的映射关系routes
+		除了path路径属性,component注册组件属性,还有
+		children[]属性,里面可以有嵌套的路由对象
+		
+	15.5.导航守卫
+		1.全局导航守卫
+		2.路由独享守卫
+		3.组件内守卫
+		
+	15.6.Keep-alive
+		keep-alive离开当前组件不会被销毁,会一直保持存在,不会频繁的创建/销毁
+		
+		
 	
 
 	
