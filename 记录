@@ -99,6 +99,7 @@ Learn Vue -version 2.0
 		6.sort() 排序
 		7.reverse() 反转
 		8.Vue.set(要修改的对象,索引值,修改后的值)
+		9.Vue.delete(要修改的对象,要删除的属性)
 		
 八、书籍购物车小案例
 	8.1.编程格式及规范

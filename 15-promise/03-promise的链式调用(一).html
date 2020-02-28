@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>03-promise的链式调用(一)</title>
+</head>
+<body>
+</body>
+
+<script type="text/javascript">
+	
+	//链式编程
+	new Promise((resolve, reject)=>{
+		//第一次网络请求的代码
+		setTimeout(()=>{
+			resolve('hello')
+		 },1000)
+		 
+	}).then((data)=>{
+		//第一次处理的代码
+		console.log(data);
+		console.log(data);
+		console.log('hello');
+		console.log('hello');
+		
+		return new Promise((resolve, reject)=>{
+		//第二次网络请求的代码
+		setTimeout(()=>{
+			resolve()
+		 },1000)
+		})
+	}).then(()=>{
+		//第二次网络处理的代码
+		console.log('hi');
+		console.log('hi');
+		console.log('hi');
+		console.log('hi');
+		console.log('hi');
+		
+	})
+</script>
+</html>

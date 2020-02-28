@@ -11,6 +11,65 @@
 
 </body>
 <script type="text/javascript">
-
+	
+	//1.使用setTimeout:异步操作
+	// setTimeout(()=>{
+	// 	console.log('hello')
+	// },1000)
+	
+	//参数: 函数(resolve, reject)
+	//resolve, reject本身也是函数
+	//链式编程
+	/*
+	new Promise((resolve, reject)=>{
+		//第一次网络请求的代码
+		setTimeout(()=>{
+		 	resolve('hello')
+		 },1000)
+		 
+	}).then((data)=>{
+		//第一次处理的代码
+		console.log(data);
+		console.log(data);
+		console.log('hello');
+		console.log('hello');
+		
+		return new Promise((resolve, reject)={
+		//第二次网络请求的代码
+		setTimeout(()=>{
+		 	resolve()
+		 },1000)
+		})
+	}).then(()={
+		//第二次网络处理的代码
+		console.log('hi');
+		console.log('hi');
+		console.log('hi');
+		console.log('hi');
+		console.log('hi');
+		
+	})
+	*/
+ 
+ //什么时候需要用promise?
+ //一般情况下是有异步操作时,使用promise对这个异步操作进行封装
+ //new -> 构造函数(1.保存了一些状态信息,2.执行传入的函数)
+ //在执行传入的回调函数时,会传入resolve, reject,本身又是函数
+ new Promise((resolve, reject)=>{
+	 setTimeout(()=>{
+		 //成功的时候调用resolve处理数据
+		 resolve('hi');
+		 
+		 //失败的时候调用reject
+		 reject('error msg');
+	 },1000)
+ }).then((data)=>{
+	 //成功后业务在此代码块中处理
+	 console.log(data);
+	 
+ }).catch((err) => {
+	 //失败后业务在此代码块中处理
+	 console.log(err)
+ })
 </script>
 </html>
